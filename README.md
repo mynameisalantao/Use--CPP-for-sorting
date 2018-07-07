@@ -5,7 +5,7 @@
 int array[number];</pre></code>  
 number為所要的陣列長度 
 <pre><code>void check(int array[],int number);</pre></code>  
-宣告函數check用來檢查經過sorting後的陣列是否有按照大小順序排列，以下為函數定義:
+宣告函數check用來檢查經過sorting後的陣列是否有按照大小順序排列，以下為函數定義
 
 <pre><code>void check(int array[],int number){
 	int error=0;
