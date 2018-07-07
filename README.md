@@ -1,10 +1,6 @@
 排序法
 ===============
 首先匯入標頭檔
-<pre><code>#include<iostream>
-#include<cstdlib>  
-#include<time.h>  </pre></code>
-使用iostream是要使用cout物件，其餘標頭檔是為了產生隨機亂數
 <pre><code>const int number=10; 
 int array[number];</pre></code>  
 number為所要的陣列長度 
