@@ -1,0 +1,51 @@
+#include<iostream>
+#include<cstdlib>  //亂數相關函數
+#include<time.h>  //時間相關函數 
+void check(int array[],int number);
+const int number=10;   //number為所要的陣列長度 
+int array[number];
+int main(){
+	using std::cout;
+	srand(time(NULL));
+	cout<<"Current random array:\n";
+	for(int i=0;i<number;i++){
+        array[i]=rand()%100;       //亂數範圍限制在100以內 
+        std::cout<<array[i]<<"  ";
+	}
+	cout<<"\n";
+	cout<<"經過轉換後結果:\n";
+	
+	
+	int temp,change;        //temp為該輪中目前最小值，change為該目前最小值的index值 
+	for(int i=0;i<number;i++){
+		temp=array[i];
+		for(int j=i;j<number;j++){		
+			if (array[j]<temp){
+				temp=array[j];
+				change=j;
+			}
+		}
+		array[change]=array[i];
+		array[i]=temp;	
+	}
+	
+		
+	for(int i=0;i<number;i++){
+        std::cout<<array[i]<<"  ";
+	}
+	check(array,number);
+	return 0;
+}
+//測試排序後是否正確 
+void check(int array[],int number){
+	int error=0;
+	for(int k=1;k<number;k++){
+		if(array[k]<array[k-1])
+		error=1;
+	}
+	std::cout<<"\n";
+	if(error==1)
+	std::cout<<"There have some error!!";
+	else
+	std::cout<<"That's correct!!";
+}
