@@ -17,7 +17,7 @@ number為所要的陣列長度
 	std::cout<<"There have some error!!";
 	else
 	std::cout<<"That's correct!!";
-}</pre></code>
+} </pre></code>
 預設變數error=0<br/>
 若檢查出在後面的元素小於在前面的元素，表示排序有問題<br/>
 主程式部分:
@@ -31,9 +31,7 @@ number為所要的陣列長度
 	}
 	cout<<"\n";
 	cout<<"經過轉換後結果:\n";</pre></code>
-	
- 接著會在此處擺放主要演算法
- ================================
+
 <pre><code>for(int i=0;i<number;i++){
         std::cout<<array[i]<<"  ";
 	}
