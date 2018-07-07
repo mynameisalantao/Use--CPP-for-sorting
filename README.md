@@ -1,6 +1,6 @@
 排序法
 ===============
-首先匯入標頭檔
+首先匯入標頭檔，接著定義變數
 <pre><code>const int number=10; 
 int array[number];</pre></code>  
 number為所要的陣列長度 
@@ -19,7 +19,7 @@ number為所要的陣列長度
 	std::cout<<"That's correct!!";
 }</pre></code>
 預設變數error=0<br/>
-若檢查出在後面的元素小於在前面的元素，表示排序有問題
+若檢查出在後面的元素小於在前面的元素，表示排序有問題<br/>
 主程式部分:
 <pre><code>int main(){
 	using std::cout;
@@ -31,9 +31,10 @@ number為所要的陣列長度
 	}
 	cout<<"\n";
 	cout<<"經過轉換後結果:\n";</pre></code>
-  接著會在此處擺放主要演算法
-  ================================
-  <pre><code>for(int i=0;i<number;i++){
+	
+ 接著會在此處擺放主要演算法
+ ================================
+<pre><code>for(int i=0;i<number;i++){
         std::cout<<array[i]<<"  ";
 	}
 	check(array,number);
