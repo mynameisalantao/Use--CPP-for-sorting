@@ -32,11 +32,11 @@ number為所要的陣列長度
         std::cout<<array[i]<<"  ";
 	}
 	cout<<"\n";
-	cout<<"經過轉換後結果:\n";</pre></code>
+	cout<<"經過轉換後結果:\n";
 	
 之後會在這裡放入主要演算法部分
 ==============================
-        <pre><code>for(int i=0;i< number;i++){
+        for(int i=0;i< number;i++){
         std::cout<<array[i]<<"  ";
 	}
 	check(array,number);
