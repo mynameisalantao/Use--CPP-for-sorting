@@ -9,7 +9,7 @@ number為所要的陣列長度
 
 <pre><code>void check(int array[],int number){
 	int error=0;
-	for(int k=1;k<  number;k++){
+	for(int k=1;k< number;k++){
 		if(array[k]< array[k-1])
 		error=1;
 	}
@@ -34,7 +34,7 @@ number為所要的陣列長度
 	cout<<"\n";
 	cout<<"經過轉換後結果:\n";</pre></code>
 
-        for(int i=0;i<number;i++){
+        for(int i=0;i< number;i++){
         std::cout<<array[i]<<"  ";
 	}
 	check(array,number);
@@ -47,7 +47,7 @@ number為所要的陣列長度
 	for(int i=number-1;i>=1;i--){
 		flag=0;     
 		for(int j=1;j<=i;j++){
-			if(array[j]<array[j-1]){  //若為true表示還有需要交換的情形
+			if(array[j]< array[j-1]){  //若為true表示還有需要交換的情形
 			    flag=1; 
 				int temp=array[j];
 				array[j]=array[j-1];
@@ -61,7 +61,7 @@ number為所要的陣列長度
   插入排序法
   <pre><code>for(int i=1;i<number;i++){
 		for(int j=i;j>=1;j--){
-			if(array[j]<array[j-1]){
+			if(array[j]< array[j-1]){
 				int temp=array[j];
 				array[j]=array[j-1];
 				array[j-1]=temp;
@@ -72,10 +72,10 @@ number為所要的陣列長度
   選擇排序法
 
   <pre><code>int temp,change;        //temp為該輪中目前最小值，change為該目前最小值的index值 
-	for(int i=0;i<number;i++){
+	for(int i=0;i< number;i++){
 		temp=array[i];
-		for(int j=i;j<number;j++){		
-			if (array[j]<temp){
+		for(int j=i;j< number;j++){		
+			if (array[j]< temp){
 				temp=array[j];
 				change=j;
 			}
