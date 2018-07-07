@@ -33,8 +33,10 @@ number為所要的陣列長度
 	}
 	cout<<"\n";
 	cout<<"經過轉換後結果:\n";</pre></code>
-
-        for(int i=0;i< number;i++){
+	
+之後會在這裡放入主要演算法部分
+==============================
+        <pre><code>for(int i=0;i< number;i++){
         std::cout<<array[i]<<"  ";
 	}
 	check(array,number);
@@ -42,7 +44,7 @@ number為所要的陣列長度
 }</pre></code>
 
 泡沫排序法
-
+---------------
 <pre><code>int flag;  //用來顯示這一輪還有無需要交換的情形，如果沒有就可以結束bubble 
 	for(int i=number-1;i>=1;i--){
 		flag=0;     
@@ -59,6 +61,7 @@ number為所要的陣列長度
 	}</pre></code>
   
   插入排序法
+  -------------
   <pre><code>for(int i=1;i<number;i++){
 		for(int j=i;j>=1;j--){
 			if(array[j]< array[j-1]){
@@ -70,7 +73,7 @@ number為所要的陣列長度
 	} </pre></code>
   
   選擇排序法
-
+---------------
   <pre><code>int temp,change;        //temp為該輪中目前最小值，change為該目前最小值的index值 
 	for(int i=0;i< number;i++){
 		temp=array[i];
