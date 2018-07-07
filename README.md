@@ -45,6 +45,11 @@ number為所要的陣列長度
 
 泡沫排序法
 ---------------
+第一輪從array[1]檢查到array[number]<br/>
+若發現其大小比他左邊的數還要小，則進行交換<br/>
+第一輪交換結束後，陣列最右邊的數必為整個陣列的最大值，以後不必再檢查他<br/>
+第二論從array[1]檢查到array[number-1]<br/>
+以此類推....
 <pre><code>int flag;  //用來顯示這一輪還有無需要交換的情形，如果沒有就可以結束bubble 
 	for(int i=number-1;i>=1;i--){
 		flag=0;     
@@ -62,6 +67,10 @@ number為所要的陣列長度
   
   插入排序法
   -------------
+  先從array[1]開始往他以左的所有元素比較大小<br/>
+  如果比左邊的數小，就不斷地跟左邊的數交換直到他已經到最左邊了(array[0])<br/>
+  然後再換array[2]不斷跟他的左邊元素做比較<br/>
+  以此類推.....
   <pre><code>for(int i=1;i<number;i++){
 		for(int j=i;j>=1;j--){
 			if(array[j]< array[j-1]){
@@ -74,7 +83,9 @@ number為所要的陣列長度
   
   選擇排序法
 ---------------
-  <pre><code>int temp,change;        //temp為該輪中目前最小值，change為該目前最小值的index值 
+不斷從所有陣列元素中找到最小的元素，然後放到最右邊<br/>
+每輪交換結束時，最左邊的必定是所有元素中的最小值，故下一輪就不用再考慮他<br/>
+<pre><code>int temp,change;        //temp為該輪中目前最小值，change為該目前最小值的index值 
 	for(int i=0;i< number;i++){
 		temp=array[i];
 		for(int j=i;j< number;j++){		
