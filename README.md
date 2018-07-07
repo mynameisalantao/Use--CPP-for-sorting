@@ -6,18 +6,7 @@ int array[number];</pre></code>
 number為所要的陣列長度 
 <pre><code>void check(int array[],int number);</pre></code>  
 宣告函數check用來檢查經過sorting後的陣列是否有按照大小順序排列，以下為函數定義
-<pre><code>void check(int array[],int number){
-	int error=0;
-	for(int k=1;k<number;k++){
-		if(array[k]<array[k-1])
-		error=1;
-	}
-	std::cout<<"\n";
-	if(error==1)
-	std::cout<<"There have some error!!";
-	else
-	std::cout<<"That's correct!!";
-} </pre></code>
+
 預設變數error=0<br/>
 若檢查出在後面的元素小於在前面的元素，表示排序有問題<br/>
 主程式部分:
