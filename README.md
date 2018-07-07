@@ -32,7 +32,7 @@ number為所要的陣列長度
 	cout<<"\n";
 	cout<<"經過轉換後結果:\n";</pre></code>
 
-<pre><code>for(int i=0;i<number;i++){
+        for(int i=0;i<number;i++){
         std::cout<<array[i]<<"  ";
 	}
 	check(array,number);
