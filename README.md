@@ -27,12 +27,12 @@ number為所要的陣列長度
 	using std::cout;
 	srand(time(NULL));
 	cout<<"Current random array:\n";
-	for(int i=0;i<number;i++){
+	for(int i=0;i< number;i++){
         array[i]=rand()%100;       //亂數範圍限制在100以內 
         std::cout<<array[i]<<"  ";
 	}
 	cout<<"\n";
-	cout<<"經過轉換後結果:\n";
+	cout<<"經過轉換後結果\n";
 	
 之後會在這裡放入主要演算法部分
 ==============================
