@@ -9,8 +9,8 @@ number為所要的陣列長度
 
 <pre><code>void check(int array[],int number){
 	int error=0;
-	for(int k=1;k<=number;k++){
-		if(array[k]<array[k-1])
+	for(int k=1;k<number;k++){
+		if(array[k]< array[k-1])
 		error=1;
 	}
 	std::cout<<"\n";
