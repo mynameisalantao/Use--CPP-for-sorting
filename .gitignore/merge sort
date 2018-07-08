@@ -1,0 +1,78 @@
+#include<iostream>
+#include<cstdlib>  //亂數相關函數
+#include<time.h>  //時間相關函數 
+void check(int array[],int number);
+void segment(int array[],int temparray[],int left,int right);
+void merge(int array[],int temparray[],int left,int middle,int right);
+const int number=10;   //number為所要的陣列長度 
+int array[number];
+int temparray[number];
+int main(){
+	using std::cout;
+	srand(time(NULL));
+	cout<<"Current random array:\n";
+	for(int i=0;i<number;i++){
+        array[i]=rand()%100;       //亂數範圍限制在100以內 
+        std::cout<<array[i]<<"  ";
+	}
+	cout<<"\n";
+	cout<<"經過轉換後結果:\n";
+
+
+    segment(array,temparray,0,number-1);
+    
+
+	for(int i=0;i<number;i++){
+        std::cout<<array[i]<<"  ";
+	}
+	check(array,number);
+	return 0;
+}
+//測試排序後是否正確 
+void check(int array[],int number){
+	int error=0;
+	for(int k=1;k<number;k++){
+		if(array[k]<array[k-1])
+		error=1;
+	}
+	std::cout<<"\n";
+	if(error==1)
+	std::cout<<"There have some error!!";
+	else
+	std::cout<<"That's correct!!";
+}
+void segment(int array[],int temparray[],int left,int right){
+	int middle;
+	if(left<right){
+		middle=(left+right)/2;
+    	segment(array,temparray,left,middle);
+    	segment(array,temparray,middle+1,right);
+    	merge(array,temparray,left,middle,right);
+    	for(int k=left;k<=right;k++)
+    	    array[k]=temparray[k];
+	}
+} 
+void merge(int array[],int temparray[],int left,int middle,int right){
+	int left_side=left;   //左半邊的牌從left開始 
+	int right_side=middle+1;  //右半邊的牌從middle+1開始  
+	int temparray_index=left;  //這裡要把左半邊的牌與右半邊的牌按照大小順序排列後，將值儲存在temparray[]
+	//並且要儲存在temparray[]中的特定範圍，也就是索引值從left開始到right，所以此處temparray_index初始值為left
+	while(left_side<=middle&&right_side<=right){
+		//判斷左右兩副牌當中的第一個元素誰的值較小，較小者放入temparray[] 
+		if(array[left_side]<=array[right_side]){  //必須要加上等號，如果兩組牌的第1張大小相同，將導致無法放入temparray[] 
+			temparray[temparray_index]=array[left_side];
+			left_side+=1;  //左邊這副牌的首牌換下一張(因為前一張已經放入temparray[]) 
+			temparray_index+=1;   // temparray[]使用貯列方式儲存 
+		}
+		else{
+			temparray[temparray_index]=array[right_side];
+	    	right_side+=1;
+	    	temparray_index+=1; 
+		}
+	}
+	//接著處理剩下的牌，基本上下面的2個while迴圈只會執行其中一個(因為必定有其中一副牌已經全部放到temparray[]中 
+	while(left_side<=middle)
+		temparray[temparray_index++]=array[left_side++];
+	while(right_side<=right)
+		temparray[temparray_index++]=array[right_side++];
+}
