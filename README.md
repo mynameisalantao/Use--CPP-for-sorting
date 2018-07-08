@@ -123,12 +123,12 @@ number為所要的陣列長度
 		while(i< j){    //索引值i與j若相撞則停止執行 
 		for(;array[i]< compare&&i<=right;i++);    //索引i不斷往右，直到找到比compare大的元素 
 		//此時array[i]的值比compare大，並且array[i]的左側元素皆會小於compare 
-		//如果compare已經是陣列中最大的數，將會使索引i=right+1，表示從array[1]到array[right]的值小於compare 
+		//如果compare已經是陣列中最大的數，將會使索引 i=right+1 ， 表示從array[1]到array[right]的值小於compare 
 	    for(;array[j]>=compare&&j> i;j--);    //索引j不斷往左，直到找到比compare小的元素，但不能比i還要左邊 
 	    if(i<j){    //將索引i的元素與索引j的元素互換
 		//不會執行此運算的情況有: 
 		//1. i與j有碰到(若碰到就表示j已經無法從i的右邊找到比compare還要小的數了，則該結束了) 
-		//2. i比j還要右邊(表示compare是陣列的最大值，使得i=right+1，那也該結束了) 
+		//2. i比j還要右邊(表示compare是陣列的最大值，使得i為right+1，那也該結束了) 
 		    temp2=array[i];
 	    	array[i]=array[j];
 		    array[j]=temp2;
@@ -150,6 +150,7 @@ number為所要的陣列長度
 	}
 	std::cout << "\n";
 }</pre></code>
+
 
 合併排序法
 ------------
