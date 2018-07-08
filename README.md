@@ -81,7 +81,7 @@ number為所要的陣列長度
 		}
 	} </pre></code>
   
-  選擇排序法
+選擇排序法
 ---------------
 不斷從所有陣列元素中找到最小的元素，然後放到最右邊<br/>
 每輪交換結束時，最左邊的必定是所有元素中的最小值，故下一輪就不用再考慮他<br/>
@@ -98,4 +98,55 @@ number為所要的陣列長度
 		array[i]=temp;	
 	}</pre></code>
 
-
+快速排序法
+-------------
+函數宣告
+<pre><code>void quicksort(int array[],int left,int right);</pre></code>
+主程式呼叫
+<pre><code>quicksort(array,0,number-1);</pre></code>
+副函數
+<pre><code>void quicksort(int array[],int left,int right){  //此處的left與right皆為陣列的index值 
+	int compare=array[left];   //將陣列最左邊第一個元素指定給compare儲存 
+	int i,j,temp1,temp2;
+	i=left+1;   //從最左邊的下一個元素開始做判斷 
+	j=right;
+	if(left> right-1)    //如果現在left值=right值，甚至left已經在right右邊時，應該停止遞迴 
+		return;
+	if(left==right-1){     //如果現在陣列只剩下2個元素，則直接比較兩元素大小，順序相反則交換 
+		if(array[left]> array[right]){
+			temp1=array[left];
+	    	array[left]=array[right];
+	    	array[right]=temp1;
+		}
+	}
+	else{     //left的右邊至少有2個元素(含)以上時，執行快速交換 
+		while(i< j){    //索引值i與j若相撞則停止執行 
+		for(;array[i]< compare&&i<=right;i++);    //索引i不斷往右，直到找到比compare大的元素 
+		//此時array[i]的值比compare大，並且array[i]的左側元素皆會小於compare 
+		//如果compare已經是陣列中最大的數，將會使索引i=right+1，表示從array[1]~array[right]的值小於compare 
+	    for(;array[j]>=compare&&j> i;j--);    //索引j不斷往左，直到找到比compare小的元素，但不能比i還要左邊 
+	    if(i<j){    //將索引i的元素與索引j的元素互換
+		//不會執行此運算的情況有: 
+		//1. i與j有碰到(若碰到就表示j已經無法從i的右邊找到比compare還要小的數了，則該結束了) 
+		//2. i比j還要右邊(表示compare是陣列的最大值，使得i=right+1，那也該結束了) 
+		    temp2=array[i];
+	    	array[i]=array[j];
+		    array[j]=temp2;
+        	}
+    	}
+    	//此處會在i>=j時執行(也就是已經進行交換完) 
+	    array[left]=array[i-1];    //把compare與索引i的前一個元素互換(因為array[i]的左側元素皆會小於compare) 
+	    array[i-1]=compare;
+	    //顯示即將傳入下一層遞迴的left、middle、right 
+	    std::cout<<left<<" "<<i-1<<" " << right<<"\n";
+	    //先檢視目前整個陣列的交換情形 
+	    for(int k=0;k<=number-1;k++){
+            std::cout<<array[k]<<"  ";
+	    }
+	    std::cout<<"\n";
+	    //再依序行左側與右側的遞迴 
+     	quicksort(array,left,i-2);
+	    quicksort(array,i,right);
+	}
+	std::cout<<"\n";
+}</pre></code>
