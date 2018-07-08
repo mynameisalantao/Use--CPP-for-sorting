@@ -162,7 +162,7 @@ void merge(int array[],int temparray[],int left,int middle,int right);</pre></co
 副函數segment部分
 <pre><code>void segment(int array[],int temparray[],int left,int right){
 	int middle;
-	if(left<right){
+	if(left < right){
 		middle=(left+right)/2;
     	segment(array,temparray,left,middle);
     	segment(array,temparray,middle+1,right);
