@@ -138,12 +138,12 @@ number為所要的陣列長度
 	    array[left]=array[i-1];    //把compare與索引i的前一個元素互換(因為array[i]的左側元素皆會小於compare) 
 	    array[i-1]=compare;
 	    //顯示即將傳入下一層遞迴的left、middle、right 
-	    std::cout <<left <<" " <<i-1 <<" " << right << "\n";
+	    std::cout << left << " " << i-1 << " " << right << "\n";
 	    //先檢視目前整個陣列的交換情形 
 	    for(int k=0;k <=number-1;k++){
-            std::cout < < array[k] <<"  ";
+            std::cout << array[k] <<"  ";
 	    }
-	    std::cout < <"\n";
+	    std::cout <<"\n";
 	    //再依序行左側與右側的遞迴 
      	quicksort(array,left,i-2);
 	    quicksort(array,i,right);
