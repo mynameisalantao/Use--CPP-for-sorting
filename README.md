@@ -140,8 +140,8 @@ number為所要的陣列長度
 	    //顯示即將傳入下一層遞迴的left、middle、right 
 	    std::cout <<left <<" " <<i-1 <<" " << right << "\n";
 	    //先檢視目前整個陣列的交換情形 
-	    for(int k=0;k<=number-1;k++){
-            std::cout << array[k] <<"  ";
+	    for(int k=0;k <=number-1;k++){
+            std::cout < < array[k] <<"  ";
 	    }
 	    std::cout < <"\n";
 	    //再依序行左側與右側的遞迴 
