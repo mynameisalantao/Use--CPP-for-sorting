@@ -203,35 +203,35 @@ void merge(int array[],int temparray[],int left,int middle,int right);</pre></co
 <pre><code>void add(int element);
 void take(void);</pre></code>
 主程式呼叫
-<pre><code>for(int i=0;i<number;i++){
+<pre><code>for(int i=0;i < number;i++){
         array[i]=rand()%100;       //亂數範圍限制在100以內 
-        cout<<array[i]<<"  ";
+        cout << array[i] << "  ";
     }
-    cout<<"\n";
+    cout << "\n";
     //放入最大堆 
-    for(int k=0;k<number;k++){  //依次將亂數產生出來的陣列輸入最大堆積當中 
+    for(int k=0;k < number;k++){  //依次將亂數產生出來的陣列輸入最大堆積當中 
     	add(array[k]);
 	}
-	cout<<"\n";
+	cout << "\n";
 	//想要印出樹狀結構 
 	//每當x到達1,2,4,8...時就要換行，所以利用y不斷以2的倍數成長，當x=y時就換行 
 	int y=1;   
 	for(int x=1,z=1;z<=number;x++,z++){
-		cout<<queues[z-1]<<" ";
+		cout << queues[z-1] << " ";
 		if(x==y){
-			cout<<"\n";
+			cout << "\n";
 		    y*=2;
 		    x=0;
 	    }
 		else
 	        y=y;
 	}
-	cout<<"\n";
+	cout << "\n";
 	//從最大堆做大小排序 
 	take();
 	//印出最後結果 
-	for(int k=0;k<number;k++){
-		cout<<result[k]<<" ";
+	for(int k=0;k < number;k++){
+		cout << result[k] << " ";
 	}</pre></code>
 
 副函數<br/>
