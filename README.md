@@ -196,3 +196,114 @@ void merge(int array[],int temparray[],int left,int middle,int right);</pre></co
 	while(right_side<=right)
 		temparray[temparray_index++]=array[right_side++];
 }</pre></code>
+
+堆積排序法
+----------
+函數宣告
+<pre><code>void add(int element);
+void take(void);</pre></code>
+主程式呼叫
+<pre><code>for(int i=0;i<number;i++){
+        array[i]=rand()%100;       //亂數範圍限制在100以內 
+        cout<<array[i]<<"  ";
+    }
+    cout<<"\n";
+    //放入最大堆 
+    for(int k=0;k<number;k++){  //依次將亂數產生出來的陣列輸入最大堆積當中 
+    	add(array[k]);
+	}
+	cout<<"\n";
+	//想要印出樹狀結構 
+	//每當x到達1,2,4,8...時就要換行，所以利用y不斷以2的倍數成長，當x=y時就換行 
+	int y=1;   
+	for(int x=1,z=1;z<=number;x++,z++){
+		cout<<queues[z-1]<<" ";
+		if(x==y){
+			cout<<"\n";
+		    y*=2;
+		    x=0;
+	    }
+		else
+	        y=y;
+	}
+	cout<<"\n";
+	//從最大堆做大小排序 
+	take();
+	//印出最後結果 
+	for(int k=0;k<number;k++){
+		cout<<result[k]<<" ";
+	}</pre></code>
+
+副函數
+//放入最大堆
+<pre><code>void add(int element){
+	static int top=0;  //紀錄目前堆疊貯列最上方的指標(為queues陣列的索引值) 
+	int point;  //紀錄目前新插入的元素所擺放的索引值 
+	if(top==0){  //若目前堆疊是空的，就放在第一個 
+		queues[0]=element;
+		top++;
+	}
+	else{
+		point=top;
+		queues[top++]=element;
+		while(point>0){  //不斷與其父節點進行大小比較，若比父節點大則進行交換，直到變成第一個節點則停止執行
+		    if(element>queues[(point-1)/2]){
+		    	queues[point]=queues[(point-1)/2];
+		    	queues[(point-1)/2]=element;
+		    	point=(point-1)/2;  //將原本的index值與原本他的父節點index值進行交換 
+			} 
+			else  //如果比他的父節點還小，那就不用進行交換 
+			break;
+		}	
+	}
+	std::cout<<"Current top"<<" "<<top<<"\n";
+	for(int i=0;i<=top-1;i++){
+		std::cout<<queues[i]<<" ";
+	}
+	std::cout<<"\n";
+}</pre></code>
+//從最大堆做大小排序 
+<pre><code>void take(){
+	int queues_top=number;  //陣列 queues的頂 (指在貯列最後一個元素的後面)
+	//int queues_front=0;  //陣列 queues的底(指在目前貯列的第一個元素上) 
+	int result_top=0;  //陣列 result的top
+	int temp;
+	int point;  //在修正最大堆積時作為暫存使用 
+	int bigger;
+	while(0<=queues_top){
+		result[result_top]=queues[0];  //將陣列queues的第一個元素放入resule陣列的最後面 
+		//
+		std::cout<<"result_top="<<result_top<<"  "<<"result[result_top]="<<result[result_top]<<" ";
+		//
+		result_top++;
+		queues[0]=queues[queues_top-1];  //將原本貯列的最後一個元素填補最前面的空缺 
+		//
+		std::cout<<"queues[0]="<<queues[0]<<"\n";
+		//
+		queues_top--;
+		point=0;
+		while(2*point+1<queues_top){  //若point的左子節點存在 
+			if(2*point+2<queues_top){  // 若point的右子節點也存在 
+				bigger=queues[2*point+2]>queues[2*point+1]? 2*point+2:2*point+1;  //比較左右子節點誰比較大 
+				if(queues[point]<queues[bigger]){  //若point節點比"左右子節點中較大者"還要小，則進行交換 
+			    	temp=queues[point];
+			    	queues[point]=queues[bigger];
+			    	queues[bigger]=temp;
+			    	point=bigger;  //把point指向新的位置 
+		    	} 
+		    	else  //若point節點比"左右子節點中較大者"還要大，則目前推疊位置正確，不用交換，故跳出迴圈 
+		    	break;
+		    } 
+			else{  //若 point的左子節點存在，但 point的右子節點不存在，則point只要跟他的左子節比較大小即可  
+				if(queues[point]<queues[2*point+1]){  //若point比他的左子節還要小，則需交換 
+			    	temp=queues[point];
+			    	queues[point]=queues[2*point+1];
+			    	queues[2*point+1]=temp;
+			    	point=2*point+1;
+		    	}
+		    	else  //若point比他的左子節還要大，則不用交換 
+		    	break;
+			}	
+		}	
+	}	
+}</pre></code>
