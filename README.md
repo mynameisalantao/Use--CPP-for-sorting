@@ -311,3 +311,101 @@ void take(void);</pre></code>
 		}	
 	}	
 }</pre></code>
+
+基數排序法
+--------------
+我這裡是使用LSD(Least Signififant Digit)，也就是從最小位數開始進行分配<br/>
+因為我這裡的亂數值是0到100之間，所以總共只會有2位數<br/>
+我建立一個10乘10的矩陣來存放經過分配後的結果(個位數與十位數共用)<br/>
+先取出每個數值的個位數，然後放入矩陣中<br/>
+陣列的每一列代表他的個位數數值，然後目前行沒有排序關係<br/>
+接著從第一行到第十行依序取出，放到陣列當中<br/>
+如此一來個位數已經按照大小順序了<br/>
+接著再根據十位數大小來分配到矩陣當中<br/>
+最後再依序將每列元素取出，則可得到按照大小順序排列的陣列
+<pre><code>using std::cout;
+	int matrix[10][10]={0};  //根據(個位數和十位數共用)位數做分配的矩陣 
+    int digit_top[10]={0};  //存放在矩陣matrix中每個陣列的top指標 
+    int digit;  //暫存要判斷分配的數值(儲存個位數或十位數) 
+    int top;  //暫存從digit_top[]取出的top值 
+	cout << "原始亂數隨機陣列array[]:\n";
+	//產生亂數，同時依照個位數分配陣列 
+	srand(time(NULL));
+	for(int i=0;i < number;i++){
+        array[i]=rand() % 100;       
+        cout << array[i] << "  ";
+        digit=array[i] % 10;  //此處digit為array[i]的個位數 
+        top=digit_top[digit];  //找出在matrix[][]中第digit個陣列，他目前的top值為多少 
+        matrix[digit][top]=array[i];  //將數值array[i]放入matrix[][]矩陣中，第digit個陣列的第top個 
+        digit_top[digit]++;  //top指標換指向下一個位置 
+    }
+    cout << "\n";
+    //印出目前個位數分配矩陣matrix[][]的狀況 
+    cout << "經過個位數分配後的矩陣matrix[][]:\n";
+    for(int k=0;k < number;k++){
+    	for(int i=0;i < number;i++){
+    		cout << matrix[k][i] << " ";
+		}
+		cout << "\n";
+	}
+	//監視陣列 digit_top[]狀況 
+	cout << "目前的陣列digit_top[]:\n";
+	for(int i=0;i < number;i++)
+	   cout << digit_top[i] << " ";
+	cout << "\n";
+	
+	//接著要按照列的順序取出matrix[][]中的元素
+	int digit_array[number]={0};  //按照個位數大小排列的陣列digit_array[] 
+	int digit_array_top=0;  //陣列digit_array[]的top指標 
+	for(int k=0;k < number;k++){  //從第0列到第number列 
+		for(int i=0;i < digit_top[k];i++){  //抽取每列的元素就到他們的top就好 
+			digit_array[digit_array_top]=matrix[k][i];
+			digit_array_top++;
+		}
+    } 
+    //按照個位數大小排列的陣列digit_array[]
+    cout << "照個位數大小排列的陣列digit_array[]:\n";
+    for(int i=0;i < number;i++){
+    	cout << digit_array[i] << " ";
+	}
+	cout << "\n";
+	//接著要清空matrix[10][10]與digit_top[10]，因為接著要改以十位數來做分配
+	for(int i=0;i < 10;i++){
+		for(int j=0;j < 10;j++)
+			matrix[i][j]=0;
+		digit_top[i]=0;
+	}
+	//照十位數分配陣列 
+	for(int i=0;i < number;i++){       
+        digit=digit_array[i]/10;  //此處digit為array[i]的十位數 
+        top=digit_top[digit];  //找出在matrix[][]中第digit個陣列，他目前的top值為多少 
+        matrix[digit][top]=digit_array[i];  //將數值digit_array[i]放入matrix[][]矩陣中，第digit個陣列的第top個 
+        cout << "digit=" << digit << " " << "top=" << top << " " << "digit_array[i]=" << digit_array[i] << "\n";
+        digit_top[digit]++;  //top指標換指向下一個位置 
+    }
+    cout << "\n";
+    //印出目前十位數分配矩陣matrix[][]的狀況 
+    cout << "經過十位數分配後的矩陣matrix[][]:\n";
+    for(int k=0;k < number;k++){
+    	for(int i=0;i < number;i++){
+    		cout << matrix[k][i] << " ";
+		}
+		cout << "\n";
+	}
+	//因為已經全部取出digit_array[]中的數值，現在可以清掉了，方便等下放入最後的結果
+	for(int i=0;i < number;i++)
+        digit_array[i]=0;  //按照十位數大小排列的陣列digit_array[] 
+	digit_array_top=0;  //陣列digit_array[]的top指標 
+	//接著要按照列的順序取出matrix[][]中的元素
+	for(int k=0;k < number;k++){  //從第0列到第number列 
+		for(int i=0;i < digit_top[k];i++){  //抽取每列的元素就到他們的top就好 
+			digit_array[digit_array_top]=matrix[k][i];
+			digit_array_top++;
+		}
+    } 
+    //按照十位數大小排列的陣列digit_array[](也就是依照大小順序排列)
+    cout<< "照個十數大小排列的陣列digit_array[]:\n";
+    for(int i=0;i < number;i++){
+    	cout << digit_array[i] << " ";
+	}
+	cout << "\n";</pre></code>
