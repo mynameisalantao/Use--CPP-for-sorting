@@ -234,8 +234,8 @@ void take(void);</pre></code>
 		cout<<result[k]<<" ";
 	}</pre></code>
 
-副函數
-//放入最大堆
+副函數<br/>
+放入最大堆
 <pre><code>void add(int element){
 	static int top=0;  //紀錄目前堆疊貯列最上方的指標(為queues陣列的索引值) 
 	int point;  //紀錄目前新插入的元素所擺放的索引值 
@@ -246,8 +246,8 @@ void take(void);</pre></code>
 	else{
 		point=top;
 		queues[top++]=element;
-		while(point>0){  //不斷與其父節點進行大小比較，若比父節點大則進行交換，直到變成第一個節點則停止執行
-		    if(element>queues[(point-1)/2]){
+		while(point > 0){  //不斷與其父節點進行大小比較，若比父節點大則進行交換，直到變成第一個節點則停止執行
+		    if(element > queues[(point-1)/2]){
 		    	queues[point]=queues[(point-1)/2];
 		    	queues[(point-1)/2]=element;
 		    	point=(point-1)/2;  //將原本的index值與原本他的父節點index值進行交換 
@@ -256,13 +256,13 @@ void take(void);</pre></code>
 			break;
 		}	
 	}
-	std::cout<<"Current top"<<" "<<top<<"\n";
+	std::cout << "Current top" << " "<<top << "\n";
 	for(int i=0;i<=top-1;i++){
-		std::cout<<queues[i]<<" ";
+		std::cout << queues[i] << " ";
 	}
 	std::cout<<"\n";
 }</pre></code>
-//從最大堆做大小排序 
+從最大堆做大小排序 
 <pre><code>void take(){
 	int queues_top=number;  //陣列 queues的頂 (指在貯列最後一個元素的後面)
 	//int queues_front=0;  //陣列 queues的底(指在目前貯列的第一個元素上) 
@@ -273,19 +273,19 @@ void take(void);</pre></code>
 	while(0<=queues_top){
 		result[result_top]=queues[0];  //將陣列queues的第一個元素放入resule陣列的最後面 
 		//
-		std::cout<<"result_top="<<result_top<<"  "<<"result[result_top]="<<result[result_top]<<" ";
+		std::cout << "result_top=" << result_top << "  " << "result[result_top]=" << result[result_top] << " ";
 		//
 		result_top++;
 		queues[0]=queues[queues_top-1];  //將原本貯列的最後一個元素填補最前面的空缺 
 		//
-		std::cout<<"queues[0]="<<queues[0]<<"\n";
+		std::cout << "queues[0]=" << queues[0] << "\n";
 		//
 		queues_top--;
 		point=0;
-		while(2*point+1<queues_top){  //若point的左子節點存在 
-			if(2*point+2<queues_top){  // 若point的右子節點也存在 
-				bigger=queues[2*point+2]>queues[2*point+1]? 2*point+2:2*point+1;  //比較左右子節點誰比較大 
-				if(queues[point]<queues[bigger]){  //若point節點比"左右子節點中較大者"還要小，則進行交換 
+		while(2*point+1 < queues_top){  //若point的左子節點存在 
+			if(2*point+2 < queues_top){  // 若point的右子節點也存在 
+				bigger=queues[2*point+2] > queues[2*point+1]? 2*point+2:2*point+1;  //比較左右子節點誰比較大 
+				if(queues[point] < queues[bigger]){  //若point節點比"左右子節點中較大者"還要小，則進行交換 
 			    	temp=queues[point];
 			    	queues[point]=queues[bigger];
 			    	queues[bigger]=temp;
@@ -295,7 +295,7 @@ void take(void);</pre></code>
 		    	break;
 		    } 
 			else{  //若 point的左子節點存在，但 point的右子節點不存在，則point只要跟他的左子節比較大小即可  
-				if(queues[point]<queues[2*point+1]){  //若point比他的左子節還要小，則需交換 
+				if(queues[point] < queues[2*point+1]){  //若point比他的左子節還要小，則需交換 
 			    	temp=queues[point];
 			    	queues[point]=queues[2*point+1];
 			    	queues[2*point+1]=temp;
