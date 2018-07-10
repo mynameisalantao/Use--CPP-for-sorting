@@ -256,7 +256,7 @@ void take(void);</pre></code>
 			break;
 		}	
 	}
-	std::cout << "Current top" << " "<<top << "\n";
+	std::cout << "Current top" << " " << top << "\n";
 	for(int i=0;i<=top-1;i++){
 		std::cout << queues[i] << " ";
 	}
