@@ -43,7 +43,7 @@ number為所要的陣列長度
 	return 0;
 }</pre></code>
 
-泡沫排序法
+泡沫排序法(20180708)
 ---------------
 第一輪從array[1]檢查到array[number]<br/>
 若發現其大小比他左邊的數還要小，則進行交換<br/>
@@ -65,7 +65,7 @@ number為所要的陣列長度
 		    break;
 	}</pre></code>
   
-  插入排序法
+  插入排序法(20180708)
   -------------
   先從array[1]開始往他以左的所有元素比較大小<br/>
   如果比左邊的數小，就不斷地跟左邊的數交換直到他已經到最左邊了(array[0])<br/>
@@ -81,7 +81,7 @@ number為所要的陣列長度
 		}
 	} </pre></code>
   
-選擇排序法
+選擇排序法(20180708)
 ---------------
 不斷從所有陣列元素中找到最小的元素，然後放到最右邊<br/>
 每輪交換結束時，最左邊的必定是所有元素中的最小值，故下一輪就不用再考慮他<br/>
@@ -98,7 +98,7 @@ number為所要的陣列長度
 		array[i]=temp;	
 	}</pre></code>
 
-快速排序法
+快速排序法(20180708)
 -------------
 函數宣告
 <pre><code>void quicksort(int array[],int left,int right);</pre></code>
@@ -152,7 +152,7 @@ number為所要的陣列長度
 }</pre></code>
 
 
-合併排序法
+合併排序法(20180709)
 ------------
 函數宣告
 <pre><code>void segment(int array[],int temparray[],int left,int right);
@@ -197,7 +197,7 @@ void merge(int array[],int temparray[],int left,int middle,int right);</pre></co
 		temparray[temparray_index++]=array[right_side++];
 }</pre></code>
 
-堆積排序法
+堆積排序法(20180710)
 ----------
 先將亂數陣列(array)排成最大堆(陣列queues) <br/>
 接著再將最大堆的第一個元素(最大者)依序放入陣列result當中 <br/>
