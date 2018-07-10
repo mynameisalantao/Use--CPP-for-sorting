@@ -199,6 +199,10 @@ void merge(int array[],int temparray[],int left,int middle,int right);</pre></co
 
 堆積排序法
 ----------
+先將亂數陣列(array)排成最大堆(陣列queues) <br/>
+接著再將最大堆的第一個元素(最大者)依序放入陣列result當中 <br/>
+然後把queues的最後一個元素放到第一個位置重新進行最大堆排列的修正 <br/>
+繼續重複把最大堆的第一個元素放入陣列result當中 <br/>
 函數宣告
 <pre><code>void add(int element);
 void take(void);</pre></code>
@@ -235,7 +239,7 @@ void take(void);</pre></code>
 	}</pre></code>
 
 副函數<br/>
-放入最大堆
+放入最大堆函數
 <pre><code>void add(int element){
 	static int top=0;  //紀錄目前堆疊貯列最上方的指標(為queues陣列的索引值) 
 	int point;  //紀錄目前新插入的元素所擺放的索引值 
@@ -262,7 +266,7 @@ void take(void);</pre></code>
 	}
 	std::cout<<"\n";
 }</pre></code>
-從最大堆做大小排序 
+從最大堆做大小排序函數
 <pre><code>void take(){
 	int queues_top=number;  //陣列 queues的頂 (指在貯列最後一個元素的後面)
 	//int queues_front=0;  //陣列 queues的底(指在目前貯列的第一個元素上) 
